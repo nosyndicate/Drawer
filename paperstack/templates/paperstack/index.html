@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'paperstack/layout.css' %}" />
+	<title>Drawer for papers</title>
+</head>
+
+<body>
+	<div id = 'mainbody'>
+		<div class='centertext'>
+			<h1>What are we looking for?</h1>
+			<form action="{% url 'paperstack:search' %}" method="get" class='centerform'>
+				<input type="text" name='k' class='forminput'/>
+				<input type="submit" value="Show me" class='formbutton'>
+			</form>
+			<a href = "{% url 'paperstack:create' %}">Add Summary</a>	
+		</div>	
+	</div>
+</body>
+</html>

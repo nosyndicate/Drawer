@@ -1,0 +1,29 @@
+{% load staticfiles %}
+
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'paperstack/layout.css' %}" />
+	<title>Add a new summary</title>
+</head>
+
+<body>
+	<div id = 'mainbody'>
+		<form action="{% url 'paperstack:create' %}" method="post" class='fillform'>
+        <table class='filltable'>
+        	{% for field in form %}
+        	<tr>
+        		<td>{{field.label}}</td>
+        		<td>{{field}}</td>
+        	</tr>
+        	{% endfor %}
+    	</table>
+        {% csrf_token %}
+        <div class='rightalign'>
+     	   <input type="reset" value='Clear' class='createbuttons'>
+        	<input type="submit" value='Create' class='createbuttons'>
+        </div>
+    </form>
+	</div>
+</body>
+</html>

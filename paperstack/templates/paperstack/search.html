@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="{% static 'paperstack/layout.css' %}" />
+		<title>Searching</title>
+	</head>
+	<body>
+		<div id = 'mainbody'>
+			<div class="centertext">
+				<h2>Let's see the results</h2>
+			</div>
+			<table class='resulttable'>
+				<tr>
+					<th class='title'>Title</th>
+					<th class='author'>Author(s)</th>
+					<th class='media'>Media</th>
+				</tr>
+				{% for item in item_list %}
+				<tr>
+					<td class='title'><a href="{% url 'paperstack:browse' %}?id={{item.id}}">{{item.title}}</a></td>
+					<td class='author'>{{item.authors}}</td>
+					<td class='media'>{{item.media}}</td>
+				</tr>
+				{% endfor %}
+		</table>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'paperstack/layout.css' %}" />
+	<title>Summary Browsing</title>
+</head>
+
+<body>
+	<div id = "mainbody">
+		<div class = "baseinfo">
+			<table class='browsetable'>
+				<tr>
+					<td colspan="2" class="browseedit">
+						<a href = "{% url 'paperstack:base' %}?summary_id={{summary_id}}">Edit info</a>
+						<a href = "{% url 'paperstack:edition' %}?summary_id={{summary_id}}&edition_id=-1">Add edition</a>
+					<td>
+				</tr>
+				<tr>
+					<th class="browsetitle">Title</td>
+					<td class="browseinfo">{{base_info.title}}</td>
+				</tr>
+				<tr>
+					<th class="browsetitle">Author(s)</td>
+					<td class="browseinfo">{{base_info.authors}}</td>
+				</tr>
+				<tr>
+					<th class="browsetitle">Media</td>
+					<td class="browseinfo">{{base_info.media}}</td>
+				</tr>
+				<tr>
+					<th class="browsetitle">Area</td>
+					<td class="browseinfo">{{base_info.areas}}</td>
+				</tr>
+				<tr>
+					<th class="browsetitle">Keyword</td>
+					<td class="browseinfo">{{base_info.keywords}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="edition">
+			{% for edition in edit_infos %}
+				<table class="edittable">
+					<tr class="edithead">
+						<td class="edittitle">Edition</td>
+						<td class="edittime">{{edition.time}}</td>
+						<td class="editlabel">
+							<a href = "{% url 'paperstack:edition' %}?summary_id=-1&edition_id={{edition.id}}">Edit</a>
+							<a href = "{% url 'paperstack:browse' %}">Delete</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="summaryhead">Summary</td>
+					</tr>
+					<tr>
+						<td colspan="3">{{edition.content}}</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="questionhead">Question</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							{% for question in edition.questions %}
+								<p>{{question}}</p>
+							{% endfor %}
+						</td>
+					</tr>
+				</table>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

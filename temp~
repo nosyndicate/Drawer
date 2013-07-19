@@ -1,0 +1,17 @@
+BEGIN;
+DROP TABLE `paperstack_question`;
+DROP TABLE `paperstack_edition`;
+ALTER TABLE `paperstack_summary_area` DROP FOREIGN KEY `summary_id_refs_id_47392642`;
+ALTER TABLE `paperstack_summary_keyword` DROP FOREIGN KEY `summary_id_refs_id_c09826fe`;
+ALTER TABLE `paperstack_summary_author` DROP FOREIGN KEY `summary_id_refs_id_7dfd8da6`;
+DROP TABLE `paperstack_summary`;
+DROP TABLE `paperstack_summary_area`;
+DROP TABLE `paperstack_summary_keyword`;
+DROP TABLE `paperstack_summary_author`;
+DROP TABLE `paperstack_media`;
+DROP TABLE `paperstack_author`;
+DROP TABLE `paperstack_keyword`;
+ALTER TABLE `paperstack_area` DROP FOREIGN KEY `parent_id_refs_id_9988517b`;
+DROP TABLE `paperstack_area`;
+
+COMMIT;
